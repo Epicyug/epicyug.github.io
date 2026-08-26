@@ -1,0 +1,239 @@
+<title>Yug Patel — Portfolio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root{
+    --bg:#f3f2ec;
+    --surface:#ffffff;
+    --ink:#20272a;
+    --ink-soft:#4c565a;
+    --ink-faint:#7c868a;
+    --line:#dcdbd1;
+    --line-soft:#e7e6dd;
+    --accent:#256b5f;      /* deep teal — "olive/green" */
+    --accent-ink:#1a5049;
+    --display:"Bricolage Grotesque",system-ui,sans-serif;
+    --serif:"Newsreader",Georgia,"Times New Roman",serif;
+    --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+    --max:940px;
+  }
+  :root:not([data-theme="light"]){
+    @media (prefers-color-scheme:dark){
+      --bg:#14181a;--surface:#1b2123;--ink:#eef0ea;--ink-soft:#adb6b3;
+      --ink-faint:#7c8783;--line:#2c3436;--line-soft:#232a2c;
+      --accent:#63c7b3;--accent-ink:#8bd8c7;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#14181a;--surface:#1b2123;--ink:#eef0ea;--ink-soft:#adb6b3;
+    --ink-faint:#7c8783;--line:#2c3436;--line-soft:#232a2c;
+    --accent:#63c7b3;--accent-ink:#8bd8c7;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:var(--serif);font-size:19px;line-height:1.6;
+    -webkit-font-smoothing:antialiased;}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 clamp(22px,5vw,40px)}
+  a{color:inherit}
+  ::selection{background:var(--accent);color:var(--surface)}
+
+  nav{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line-soft)}
+  nav .wrap{display:flex;justify-content:space-between;align-items:center;height:60px}
+  .brand{font-family:var(--display);font-weight:700;font-size:17px;letter-spacing:-.01em;text-decoration:none}
+  .brand span{color:var(--accent)}
+  .navlinks{display:flex;gap:26px;align-items:center}
+  .navlinks a{font-family:var(--mono);font-size:12.5px;letter-spacing:.02em;text-decoration:none;color:var(--ink-soft)}
+  .navlinks a:hover{color:var(--accent)}
+  @media(max-width:640px){.navlinks a:not(.cta){display:none}}
+  .cta{border:1px solid var(--ink);border-radius:999px;padding:7px 15px !important;color:var(--ink) !important}
+  .cta:hover{background:var(--ink);color:var(--bg) !important;border-color:var(--ink)}
+
+  .hero .wrap{padding:clamp(56px,11vw,120px) clamp(22px,5vw,40px) clamp(40px,7vw,70px)}
+  .eyebrow{font-family:var(--mono);font-size:13px;letter-spacing:.04em;color:var(--accent);margin:0 0 24px;display:flex;align-items:center;gap:10px}
+  .eyebrow::before{content:"";width:28px;height:1px;background:var(--accent)}
+  h1{font-family:var(--display);font-weight:600;font-size:clamp(40px,8vw,82px);line-height:1.02;letter-spacing:-.025em;margin:0;text-wrap:balance}
+  h1 em{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--accent)}
+  .hero p{font-size:clamp(19px,2.4vw,23px);color:var(--ink-soft);max-width:34ch;margin:28px 0 0;line-height:1.5}
+  .facts{display:flex;flex-wrap:wrap;gap:28px;margin-top:40px;padding-top:26px;border-top:1px solid var(--line)}
+  .fact .n{font-family:var(--display);font-weight:700;font-size:26px;letter-spacing:-.02em;line-height:1}
+  .fact .l{font-family:var(--mono);font-size:11.5px;letter-spacing:.03em;color:var(--ink-faint);margin-top:6px}
+
+  section{padding:clamp(48px,8vw,90px) 0;border-top:1px solid var(--line-soft)}
+  .lbl{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);margin:0 0 30px}
+  h2{font-family:var(--display);font-weight:600;font-size:clamp(26px,4vw,36px);letter-spacing:-.02em;margin:0 0 20px;line-height:1.1}
+
+  .about{display:grid;grid-template-columns:1fr;gap:8px}
+  .about p{font-size:clamp(19px,2.3vw,22px);line-height:1.62;margin:0 0 20px;max-width:60ch;color:var(--ink)}
+  .about p:last-child{margin-bottom:0}
+  .about strong{font-weight:500;color:var(--accent-ink);font-style:normal}
+
+  .proj{border-top:1px solid var(--line);padding:34px 0;display:grid;grid-template-columns:1fr;gap:14px}
+  .proj:last-child{border-bottom:1px solid var(--line)}
+  .p-top{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap}
+  .proj h3{font-family:var(--display);font-weight:600;font-size:clamp(24px,3.6vw,32px);letter-spacing:-.02em;margin:0}
+  .p-year{font-family:var(--mono);font-size:13px;color:var(--ink-faint);white-space:nowrap}
+  .p-award{font-family:var(--mono);font-size:12.5px;color:var(--accent);margin:-4px 0 0}
+  .proj p{font-size:18px;line-height:1.58;color:var(--ink-soft);max-width:66ch;margin:0}
+  .p-foot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-top:4px}
+  .stack{font-family:var(--mono);font-size:13px;color:var(--ink-faint)}
+  .stack b{color:var(--ink-soft);font-weight:500}
+  .plink{font-family:var(--mono);font-size:13px;text-decoration:none;color:var(--accent);border-bottom:1px solid transparent}
+  .plink:hover{border-bottom-color:var(--accent)}
+  .plink::after{content:" →"}
+
+  .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2px;background:var(--line-soft);border:1px solid var(--line-soft)}
+  .skill{background:var(--bg);padding:22px 24px}
+  .skill .h{font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+  .skill .v{font-family:var(--serif);font-size:17px;line-height:1.5;color:var(--ink)}
+
+  .exp-row{border-top:1px solid var(--line);padding:24px 0;display:grid;grid-template-columns:1fr 3fr;gap:24px}
+  .exp-row:last-child{border-bottom:1px solid var(--line)}
+  .exp-row .when{font-family:var(--mono);font-size:13px;color:var(--ink-faint)}
+  .exp-row h4{font-family:var(--display);font-weight:600;font-size:20px;margin:0 0 2px;letter-spacing:-.01em}
+  .exp-row .org{color:var(--accent);font-size:16px;margin-bottom:8px}
+  .exp-row p{font-size:17px;color:var(--ink-soft);margin:0;line-height:1.55;max-width:60ch}
+  @media(max-width:600px){.exp-row{grid-template-columns:1fr;gap:4px}}
+
+  .contact{text-align:left}
+  .contact h2{font-size:clamp(34px,7vw,64px);margin-bottom:14px}
+  .contact .sub{font-size:20px;color:var(--ink-soft);max-width:40ch;margin:0 0 34px}
+  .clist{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+  .clist a{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 4px;border-bottom:1px solid var(--line);text-decoration:none;transition:padding-left .2s ease,color .2s}
+  .clist a:hover{padding-left:16px;color:var(--accent)}
+  .clist .k{font-family:var(--display);font-weight:600;font-size:clamp(20px,3vw,26px);letter-spacing:-.01em}
+  .clist .v{font-family:var(--mono);font-size:14px;color:var(--ink-faint);text-align:right;word-break:break-word}
+  .clist a:hover .v{color:var(--accent)}
+
+  footer{border-top:1px solid var(--line-soft);padding:26px 0}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-family:var(--mono);font-size:12px;color:var(--ink-faint)}
+
+  a:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.clist a{transition:none}}
+</style>
+
+<nav>
+  <div class="wrap">
+    <a href="#top" class="brand">Yug&nbsp;Patel<span>.</span></a>
+    <div class="navlinks">
+      <a href="#work">Work</a>
+      <a href="#skills">Skills</a>
+      <a href="#about">About</a>
+      <a href="#contact" class="cta">Get in touch</a>
+    </div>
+  </div>
+</nav>
+
+<main id="top">
+  <header class="hero">
+    <div class="wrap">
+      <p class="eyebrow">Purdue CIT · Seeking a Summer 2026 SWE internship</p>
+      <h1>I build software — and the <em>hardware</em> it runs on.</h1>
+      <p>Full-stack web and mobile apps, all the way down to the firmware on the chip.</p>
+      <div class="facts">
+        <div class="fact"><div class="n">3.88</div><div class="l">GPA / 4.0</div></div>
+        <div class="fact"><div class="n">3rd</div><div class="l">of 170 teams</div></div>
+        <div class="fact"><div class="n">'28</div><div class="l">Class year</div></div>
+        <div class="fact"><div class="n">4+</div><div class="l">Shipped projects</div></div>
+      </div>
+    </div>
+  </header>
+
+  <section id="work">
+    <div class="wrap">
+      <p class="lbl">Selected work</p>
+
+      <article class="proj">
+        <div class="p-top"><h3>RackRadar</h3><span class="p-year">2025</span></div>
+        <p class="p-award">★ 3rd of 170 teams — Purdue Design &amp; Innovation Challenge</p>
+        <p>A phone-controlled campus bike lock with live rack-availability tracking. As the sole developer on a five-person team, I built the entire React Native app and the IoT hardware in six weeks — ESP32 firmware, motors and sensors, and a 3D-printed enclosure — into a working demo.</p>
+        <div class="p-foot"><span class="stack"><b>React Native</b> · ESP32 · MQTT · Firmware · 3D printing</span></div>
+      </article>
+
+      <article class="proj">
+        <div class="p-top"><h3>Hours Counter</h3><span class="p-year">2025</span></div>
+        <p>Hotel managers were retyping handwritten timesheets by hand. I built a web app that reads a photo with Google Cloud Vision OCR, parses messy handwriting into clean time data with a custom engine, and returns an editable PDF through a serverless scan-to-email pipeline.</p>
+        <div class="p-foot"><span class="stack"><b>Google Vision OCR</b> · Netlify Functions · IMAP · TypeScript</span><a class="plink" href="https://github.com/Epicyug/hand-written-Hours-calc" target="_blank" rel="noopener">GitHub</a></div>
+      </article>
+
+      <article class="proj">
+        <div class="p-top"><h3>LocalInn PMS</h3><span class="p-year">2025</span></div>
+        <p>A staff-only property management system for a walk-in inn: a live room board, check-in flow, do-not-rent list, per-shift cash reconciliation, housekeeping status, and owner reports — the operational backbone a small hotel actually runs on.</p>
+        <div class="p-foot"><span class="stack"><b>TypeScript</b> · React · Supabase</span><a class="plink" href="https://github.com/Epicyug/localinn-pms" target="_blank" rel="noopener">GitHub</a></div>
+      </article>
+
+      <article class="proj">
+        <div class="p-top"><h3>Iron &amp; Olive</h3><span class="p-year">2025</span></div>
+        <p>An installable progressive web app that tracks a 12-week training program, suggests progressive-overload weights from past sessions, and keeps form videos and notes — fully functional offline once loaded.</p>
+        <div class="p-foot"><span class="stack"><b>PWA</b> · Service Worker · JavaScript</span><a class="plink" href="https://github.com/Epicyug/gym-tracker" target="_blank" rel="noopener">GitHub</a></div>
+      </article>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="wrap">
+      <p class="lbl">What I work with</p>
+      <div class="skills-grid">
+        <div class="skill"><div class="h">Languages</div><div class="v">JavaScript / TypeScript, C#, Java, Python, SQL</div></div>
+        <div class="skill"><div class="h">Frontend</div><div class="v">React, React Native, Expo, Vite</div></div>
+        <div class="skill"><div class="h">Backend &amp; Cloud</div><div class="v">Node, Supabase, Netlify Functions, Google Cloud Vision, serverless</div></div>
+        <div class="skill"><div class="h">Hardware &amp; IoT</div><div class="v">ESP32, MQTT, embedded firmware, 3D printing</div></div>
+        <div class="skill"><div class="h">Tooling</div><div class="v">Git &amp; GitHub, Linux / CLI, Figma, Agile / Scrum, CI/CD</div></div>
+        <div class="skill"><div class="h">Also</div><div class="v">Product research, pitching, entrepreneurship certificate</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap">
+      <p class="lbl">About</p>
+      <div class="about">
+        <p>I'm a Computer &amp; Information Technology student at Purdue who likes to build things <strong>end to end</strong> — the seam where software meets the physical world, where an app has to actually make a motor turn.</p>
+        <p>Most of my projects started as a real problem for real people: hotel staff drowning in handwritten timesheets, students who couldn't find a bike rack. I do the research, write the code, solder the board, and pitch the result — and I'd rather ship a working product than a prototype that stays on a shelf.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="exp">
+    <div class="wrap">
+      <p class="lbl">Experience &amp; education</p>
+      <div class="exp-row">
+        <div class="when">May 2024 – Aug 2025</div>
+        <div><h4>IT Support Specialist</h4><div class="org">Shamall LLC · Fort Wayne, IN</div>
+        <p>Sole IT resource across several hotel properties — diagnosing hardware, software and network issues, and deploying workstations, POS, Wi-Fi and camera systems end to end.</p></div>
+      </div>
+      <div class="exp-row">
+        <div class="when">Jun 2022 – Present</div>
+        <div><h4>Head of Marketing</h4><div class="org">Navratri Fort Wayne · 501(c)(3)</div>
+        <p>Lead strategy, the website, social content and fundraising for a community festival — growing attendance year over year and coordinating corporate partnerships.</p></div>
+      </div>
+      <div class="exp-row">
+        <div class="when">Expected May 2028</div>
+        <div><h4>B.S. Computer &amp; Information Technology</h4><div class="org">Purdue University · West Lafayette, IN</div>
+        <p>GPA 3.88 / 4.0. Certificate in Entrepreneurship &amp; Innovation.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <p class="lbl">Contact</p>
+      <h2>Let's talk.</h2>
+      <p class="sub">Open to software engineering internships for Summer 2026. Email is the quickest way to reach me.</p>
+      <div class="clist">
+        <a href="mailto:yug11507@icloud.com"><span class="k">Email</span><span class="v">yug11507@icloud.com</span></a>
+        <a href="https://github.com/Epicyug" target="_blank" rel="noopener"><span class="k">GitHub</span><span class="v">github.com/Epicyug</span></a>
+        <a href="https://linkedin.com/in/yug-patel-019018332" target="_blank" rel="noopener"><span class="k">LinkedIn</span><span class="v">in/yug-patel-019018332</span></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Yug Patel</span>
+    <span>West Lafayette, IN</span>
+  </div>
+</footer>
